@@ -16,5 +16,8 @@ tests-unit: clean pep8
 tests-with-coverage: clean pep8
 	py.test --cov=src --cov-report=xml tests
 
+coverage:
+	coverage run --source=src -m pytest tests
+
 sonar: tests-with-coverage
 	sonar-scanner
