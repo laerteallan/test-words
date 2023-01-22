@@ -22,7 +22,7 @@ before_deploy:
 deploy:
   provider: heroku
   api_key:
-    secure: "d9fe9101-dbca-4180-a2c0-3e20e7efe2b9"
+    secure: $TOKEN_PROJECT
   app: test-word
   on:
     all_branches: true
