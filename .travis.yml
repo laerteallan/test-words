@@ -21,4 +21,5 @@ deploy:
   api_key:
     secure: "d9fe9101-dbca-4180-a2c0-3e20e7efe2b9"
   app: test-word
-
+  on:
+    all_branches: true
