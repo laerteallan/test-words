@@ -2,8 +2,8 @@
 language: python
 matrix:
   include:
-  - name: "3.7.2 Unittest"
-    python: "3.7-dev"
+  - name: "3.10.2 Unittest"
+    python: "3.10-dev"
     env: TEST_SUITE=UNITTEST
 
 install:
