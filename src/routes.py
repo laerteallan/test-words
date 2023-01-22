@@ -1,5 +1,3 @@
-from flask import Flask
-
 from src.api.v1.words import WordsCountVowels, WordsSort
 
 
