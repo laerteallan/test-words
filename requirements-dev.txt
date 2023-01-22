@@ -3,4 +3,3 @@ pytest==7.2.1
 mock==5.0.1
 pytest-cov==3.0.0
 flake8==6.0.0
-python-coveralls==2.9.3

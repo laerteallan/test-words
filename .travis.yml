@@ -14,7 +14,7 @@ branches:
   - main
 
 script: 
-  - make tests
+  - make tests-with-coverage
 
 after_success:
   - coveralls
