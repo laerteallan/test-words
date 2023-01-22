@@ -17,6 +17,7 @@ script:
   - make tests
 
 after_success:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install coveralls 
   - coveralls
   
 before_deploy:
