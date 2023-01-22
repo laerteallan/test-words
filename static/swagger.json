@@ -1,0 +1,164 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Test Words application",
+    "version": "1.0.0",
+    "title": "Test words",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+},
+  "tags": [
+    {
+      "name": "Words Test",
+      "description": "Test to sort lists and cout vowels"
+    }
+  ],
+
+"servers": [
+        {
+        "url": "/"
+        }
+    ],
+ "components": {
+        "schemas": {
+            "vowel_count": {
+                "type": "object",
+                "properties": {
+                    "words": {
+                        "type": "array",
+                            "example": ["batman", "robim", "coringa"]
+                    }
+                }
+            },
+            "sort": {
+                "type": "object",
+                "properties": {
+                    "words": {
+                        "type": "array",
+                            "example": ["robim", "batman", "coringa"]
+                    },
+                    "order": {
+                        "type": "string",
+                        "example": "asc"
+                    }
+                }
+            },
+            "vowel_count_result": {
+                "type": "object",
+                "properties":{
+
+                    "example": {"batman": 2, "robim": 2, "coringa": 3}
+                }
+            }
+        }
+    },
+ "paths": {
+        "/vowel_count": {
+            "post": {
+            "tags": [
+                "words"
+            ],
+            "requestBody": {
+            "description": "Post Sort word list",
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/vowel_count"
+                    }
+                }
+            }
+            },
+            "responses": {
+                "200": {
+                    "description": "result sort words",
+                    "content": {
+                        "application/json": {
+                            "example": {"batman": 2, "coringa": 3, "robim": 2}
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error",
+                    "content": {
+                        "application/json": {
+                            "example": {"error": "body invalid"}
+                        }
+                    }
+                },
+                "422": {
+                    "description": "Error",
+                    "content": {
+                        "application/json": {
+                            "example": {"error": { "json": { "order": ["Missing data for required field."]}}}
+                        }
+                    }
+                },
+                "500": {
+                    "description": "Error",
+                    "content": {
+                        "application/json": {
+                            "example": {"error": "Internal Sever Error"}
+                        }
+                    }
+                }
+            }
+            }
+    },
+        "/sort": {
+            "post": {
+            "tags": [
+                "words"
+            ],
+            "requestBody": {
+            "description": "Post vowel count in word",
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "$ref": "#/components/schemas/sort"
+                    }
+                }
+            }
+            },
+            "responses": {
+                "200": {
+                    "description": "result sort words",
+                    "content": {
+                        "application/json": {
+                            "example": ["batman", "coringa", "robim"]
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error",
+                    "content": {
+                        "application/json": {
+                            "example": {"error": "body invalid"}
+                        }
+                    }
+                },
+                "422": {
+                    "description": "Error",
+                    "content": {
+                        "application/json": {
+                            "example": {"error": { "json": { "order": ["Missing data for required field."]}}}
+                        }
+                    }
+                },
+                "500": {
+                    "description": "Error",
+                    "content": {
+                        "application/json": {
+                            "example": {"error": "Internal Sever Error"}
+                        }
+                    }
+                }
+            }
+            }
+    }
+ }
+}
+
